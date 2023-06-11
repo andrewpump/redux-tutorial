@@ -16,3 +16,6 @@ function greet(fnMessage) {
 }
 
 greet(sayHello);
+
+// Higher order functions either take a function as an argument or return a function as a result
+// Map, filter or reduce are all examples of higher order functions
