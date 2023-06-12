@@ -1,11 +1,16 @@
-import { Map } from 'immutable';
+import { produce } from 'immer';
 
-let book = Map({ title: "Harry Potter" })
+let book = { title: "Harry Potter" }
 
 function publish(book) {
-    return book.set("isPublished", true);
+    // draft book is a proxy and records all the changes in the book
+    // it does not multiply the origin book
+    return produce(book, draftBook => {
+        draftBook.isPublished = true;
+    });
 }
 
-book = publish(book);
+let updated = publish(book);
 
-console.log(book.toJS());
+console.log(book);
+console.log(updated);
