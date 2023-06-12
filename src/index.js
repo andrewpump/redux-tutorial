@@ -1,3 +1,14 @@
-// A function is pure if given the same args, it gives the same result
-// All reducers in redux must be pure
-// pure functions are self documenting, increases testability, can easily be run concurrently, and cacheable (dynamic programming)
+// Updating immutable objects functionally
+const person = { 
+    name: "John",
+    address: {
+        country: "USA",
+        city: "SF"
+    }
+}
+const updated = Object.assign({}, person, {name: "Bob", age: 30})
+const updated2 = {...person, name: "Bob",}
+console.log(updated);
+
+// both object.assign and the spread operator "..." do a shallow copy.  That means that
+// the address still maintains a reference to the original person
